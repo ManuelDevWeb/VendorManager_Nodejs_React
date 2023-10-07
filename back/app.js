@@ -4,10 +4,10 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 // Routes
-const agreements = require("./routes/agreementsRoutes");
-const submissions = require("./routes/submissionsRoutes");
-const balances = require("./routes/balancesRoutes");
-const admin = require("./routes/adminRoutes");
+const agreements = require("./routes/agreement");
+const submissions = require("./routes/submission");
+const balances = require("./routes/balance");
+const admin = require("./routes/admin");
 
 var app = express();
 

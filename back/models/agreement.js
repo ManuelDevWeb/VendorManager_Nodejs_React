@@ -1,15 +1,15 @@
 // Import required modules and setup the database and ORM
-const { db, Orm } = require('../lib/orm');
-const { Submission } = require('./submissions');
+const { db, Orm } = require("../lib/orm");
+const { Submission } = require("./submissions");
 
 // Define the Agreement model with its attributes
-const Agreement = db.define('Agreement', {
+const Agreement = db.define("Agreement", {
   terms: {
     type: Orm.TEXT,
     allowNull: false,
   },
   status: {
-    type: Orm.ENUM('new', 'in_progress', 'terminated'),
+    type: Orm.ENUM("new", "in_progress", "terminated"),
   },
 });
 
