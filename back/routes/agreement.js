@@ -1,6 +1,6 @@
 const express = require("express");
 
-// Controller
+// Functions controller
 const { getAllAgreements, getAgreement } = require("../controllers/agreement");
 
 const router = express.Router();
