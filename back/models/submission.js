@@ -1,8 +1,8 @@
 // Import required modules and setup the database and ORM
-const { db, Orm } = require('../lib/orm');
+const { db, Orm } = require("../lib/orm");
 
 // Define the Submission model with its attributes
-const Submission = db.define('Submission', {
+const Submission = db.define("Submission", {
   description: {
     type: Orm.TEXT,
     allowNull: false,

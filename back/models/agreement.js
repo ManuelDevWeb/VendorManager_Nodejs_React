@@ -1,6 +1,6 @@
 // Import required modules and setup the database and ORM
 const { db, Orm } = require("../lib/orm");
-const { Submission } = require("./submissions");
+const { Submission } = require("./submission");
 
 // Define the Agreement model with its attributes
 const Agreement = db.define("Agreement", {

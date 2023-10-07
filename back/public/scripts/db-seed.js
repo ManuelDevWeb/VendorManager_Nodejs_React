@@ -1,6 +1,6 @@
 const { Agreement } = require("../../models/agreement");
-const { Submission } = require("../../models/submissions");
-const { Account } = require("../../models/accounts");
+const { Submission } = require("../../models/submission");
+const { Account } = require("../../models/account");
 
 async function seed() {
   // create tables

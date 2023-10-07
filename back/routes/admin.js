@@ -1,18 +1,17 @@
 const express = require("express");
 
-// Custom response
-const response = require("../network/response");
+// Functions controller
+const {
+  getBestBuyerProfession,
+  getBestBuyers,
+} = require("../controllers/admin");
 
 const router = express.Router();
 
 // GET /admin/best-supplier-profession?start=<date>&end=<date>
-router.get("/best-supplier-profession", (req, res) => {
-  response.success(req, res, "GET /admin/best-supplier-profession");
-});
+router.get("/best-supplier-profession", getBestBuyerProfession);
 
 // GET /admin/best-buyers?start=<date>&end=<date>&limit=<integer>
-router.get("/best-buyers", (req, res) => {
-  response.success(req, res, "GET /admin/best-buyers");
-});
+router.get("/best-buyers", getBestBuyers);
 
 module.exports = router;

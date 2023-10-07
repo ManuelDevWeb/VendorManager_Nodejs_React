@@ -8,8 +8,8 @@ const { success, error } = require("../network/response");
 const getAllAgreements = async (req, res) => {
   try {
     success(req, res, "GET /agreements");
-  } catch (error) {
-    error(req, res, error.message, 500);
+  } catch (err) {
+    error(req, res, err.message, 500);
   }
 };
 
@@ -17,8 +17,8 @@ const getAllAgreements = async (req, res) => {
 const getAgreement = async (req, res) => {
   try {
     success(req, res, "GET /agreements/:agreement_id");
-  } catch (error) {
-    error(req, res, error.message, 500);
+  } catch (err) {
+    error(req, res, err.message, 500);
   }
 };
 

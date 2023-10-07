@@ -1,3 +1,6 @@
+// Model
+const { Submission } = require("../models/submission");
+
 // Custom response
 const { success, error } = require("../network/response");
 
@@ -5,8 +8,8 @@ const { success, error } = require("../network/response");
 const getAllUnpaidSubmissions = async (req, res) => {
   try {
     success(req, res, "GET /submissions/unpaid");
-  } catch (error) {
-    error(req, res, error.message, 500);
+  } catch (err) {
+    error(req, res, err.message, 500);
   }
 };
 
@@ -14,8 +17,8 @@ const getAllUnpaidSubmissions = async (req, res) => {
 const paySubmission = async (req, res) => {
   try {
     success(req, res, "POST /submissions/:submission_id/pay");
-  } catch (error) {
-    error(req, res, error.message, 500);
+  } catch (err) {
+    error(req, res, err.message, 500);
   }
 };
 
