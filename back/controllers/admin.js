@@ -77,6 +77,9 @@ const getBestBuyers = async (req, res) => {
       return error(req, res, "Invalid month, set number between 1 and 12", 400);
     }
 
+    if (limit < 1)
+      return error(req, res, "Invalid limit, set number greater than 0", 400);
+
     const buyersAccount = await Account.findAll({
       where: {
         type: "buyer",

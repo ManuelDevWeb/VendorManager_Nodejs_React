@@ -33,8 +33,8 @@ const getAgreement = async (req, res) => {
     const { id } = req.params;
     const { accountId } = req.body;
 
-    if (!id) {
-      error(req, res, "Missing id", 400);
+    if (!id || !accountId) {
+      return error(req, res, "Agreement id and account id are required", 400);
     }
 
     // return the agreement only if it belongs to the calling account.
