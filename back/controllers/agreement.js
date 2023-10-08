@@ -27,13 +27,11 @@ const getAllAgreements = async (req, res) => {
   }
 };
 
-// Create an endpoint that return the agreement only if it belongs to the calling account.
+// Function to return the agreement only if it belongs to the calling account.
 const getAgreement = async (req, res) => {
   try {
     const { id } = req.params;
-    const { callingAccountId } = req.body;
-
-    // TODO: Get the calling account id from the token req.user.id and verify if the account exists.
+    const { accountId } = req.body;
 
     if (!id) {
       error(req, res, "Missing id", 400);
@@ -43,10 +41,7 @@ const getAgreement = async (req, res) => {
     const agreement = await Agreement.findOne({
       where: {
         id,
-        [Op.or]: [
-          { BuyerId: callingAccountId },
-          { SupplierId: callingAccountId },
-        ],
+        [Op.or]: [{ BuyerId: accountId }, { SupplierId: accountId }],
       },
     });
 

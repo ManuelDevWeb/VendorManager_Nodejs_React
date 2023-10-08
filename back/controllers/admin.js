@@ -1,10 +1,11 @@
 // Model
 const { Account } = require("../models/account");
+const { Submission } = require("../models/submission");
 
 // Custom response
 const { success, error } = require("../network/response");
 
-// Implement this API to return the best buyer profession that earned the most money (sum of submissions paid) for any supplier who worked in the specified time range.
+// Function to return the best buyer profession that earned the most money (sum of submissions paid) for any supplier who worked in the specified time range.
 const getBestBuyerProfession = async (req, res) => {
   try {
     success(
@@ -17,7 +18,7 @@ const getBestBuyerProfession = async (req, res) => {
   }
 };
 
-//  Implement this API to return the buyers who paid the most for submissions in the given time period. The result should be limited based on the query parameter `limit`, with the default limit set to 3.
+// Function to return the buyers who paid the most for submissions in the given time period. The result should be limited based on the query parameter `limit`, with the default limit set to 3.
 const getBestBuyers = async (req, res) => {
   try {
     success(
