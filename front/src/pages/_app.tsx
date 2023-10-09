@@ -3,11 +3,14 @@ import type { AppProps } from "next/app";
 
 // Provider
 import { VendorManagerProvider } from "@/context/VendorManagerProvider";
+import { AuthProvider } from "@/context/AuthProvider";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <VendorManagerProvider>
-      <Component {...pageProps} />
-    </VendorManagerProvider>
+    <AuthProvider>
+      <VendorManagerProvider>
+        <Component {...pageProps} />
+      </VendorManagerProvider>
+    </AuthProvider>
   );
 }
