@@ -71,8 +71,8 @@ const paySubmission = async (req, res) => {
               model: Submission,
               as: "Submissions",
               where: {
-                AgreementId: submission_id,
-                paid: false,
+                id: submission_id,
+                // paid: false,
               },
             },
           ],
@@ -81,17 +81,12 @@ const paySubmission = async (req, res) => {
     });
 
     if (!infoAccountBuyer) {
-      return error(
-        req,
-        res,
-        "Account not found or dont have any submission to pay",
-        404
-      );
+      return error(req, res, "Account or Submission not found", 404);
     }
 
-    // if (infoAccountBuyer && infoAccountBuyer?.Buyer.length === 0) {
-    //   return error(req, res, "You don't have submissions to pay");
-    // }
+    if (infoAccountBuyer.Buyer[0].Submissions[0].paid) {
+      return error(req, res, "Submission already paid", 400);
+    }
 
     const infoAccountSupplier = await Account.findOne({
       where: {
