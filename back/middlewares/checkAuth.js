@@ -33,6 +33,8 @@ const checkAuth = async (req, res, next) => {
       type: infoAccount.type,
       role: infoAccount.role,
     };
+
+    next();
     try {
     } catch (err) {
       return error(req, res, err.message, 404);

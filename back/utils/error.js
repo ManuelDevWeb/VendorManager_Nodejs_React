@@ -9,4 +9,4 @@ const err = (message, codeStatus) => {
   return e;
 };
 
-module.exports = err;
+module.exports = { err };

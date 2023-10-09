@@ -8,6 +8,7 @@ const { success, error } = require("../network/response");
 
 // Function to list an agreements belonging to the user (buyer or supplier) where the agreements are not terminated.
 const getAllAgreements = async (req, res) => {
+  console.log("getAllAgreements");
   try {
     const notTerminatedAgreements = await Agreement.findAll({
       where: {
