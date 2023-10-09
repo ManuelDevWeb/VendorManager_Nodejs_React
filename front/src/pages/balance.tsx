@@ -1,6 +1,9 @@
 // Layout
 import { Layout } from "@/layout/Layout";
 
+// Components
+import { BalanceInfo } from "@/components/BalanceInfo";
+
 const balance = () => {
   return (
     <Layout>
@@ -8,9 +11,7 @@ const balance = () => {
       <p className="text-2xl my-10">
         You can add balance to your account here!.
       </p>
-      <div className="flex flex-col md:flex-row gap-10 flex-wrap">
-        <p>Balance!!</p>
-      </div>
+      <BalanceInfo />
     </Layout>
   );
 };

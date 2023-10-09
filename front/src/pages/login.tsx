@@ -29,10 +29,12 @@ const Login = () => {
         username,
         password,
       });
-      console.log(data.body.data);
 
       // Save the user in the context
       handleSetUser(data.body.data);
+
+      // Save the token in the local storage
+      localStorage.setItem("token", data.body.token);
 
       // Redirect to home
       router.push("/");

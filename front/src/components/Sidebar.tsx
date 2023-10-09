@@ -9,6 +9,7 @@ import { ItemNavProps } from "../interface/index";
 
 // Custom Hooks
 import { useVendorManager } from "@/hooks/useVendorManager";
+import { useAuth } from "@/hooks/useAuth";
 
 const Sidebar = () => {
   const {
@@ -16,8 +17,10 @@ const Sidebar = () => {
     navCategoriesAdmin,
   }: { navCategories?: ItemNavProps[]; navCategoriesAdmin?: ItemNavProps[] } =
     useVendorManager();
+  const { user }: any = useAuth();
 
-  const [isAdmin, setIsAdmin] = useState(true);
+  // Validate if the user is admin
+  const isAdmin = user?.role === "admin";
 
   const tabNav = isAdmin ? navCategoriesAdmin : navCategories;
 

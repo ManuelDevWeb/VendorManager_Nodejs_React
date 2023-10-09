@@ -14,6 +14,12 @@ import { FaHandshake } from "react-icons/fa";
 import { MdAccountBalanceWallet } from "react-icons/md";
 import { TbTruckDelivery } from "react-icons/tb";
 
+// Custom Hooks
+import { useAuth } from "../hooks/useAuth";
+
+// Config
+import { clientAxios } from "../config/clientAxios";
+
 const nav = [
   {
     id: 1,
@@ -54,7 +60,6 @@ const VendorManagerProvider = ({ children }: VendorManagerProviderProps) => {
   const [currentNavCategory, setCurrentNavCategory] = useState<
     ItemNavProps | undefined
   >(undefined);
-  const [user, setUser] = useState({} as any);
 
   const router = useRouter();
   const currentRoute = router.pathname;
@@ -76,8 +81,6 @@ const VendorManagerProvider = ({ children }: VendorManagerProviderProps) => {
         navCategoriesAdmin,
         currentNavCategory,
         handleClickCategory,
-        user,
-        setUser,
       }}
     >
       {children}
