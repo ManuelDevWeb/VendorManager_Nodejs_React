@@ -1,6 +1,18 @@
+import { useState } from "react";
 import Link from "next/link";
 
+// Config
+import { clientAxios } from "@/config/clientAxios";
+
+// Custom Hooks
+import { useVendorManager } from "@/hooks/useVendorManager";
+
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  // const { setUser }: { setUser } = useVendorManager();
+
   return (
     <div className="h-screen flex flex-col justify-center items-center">
       <div className="lg:w-[30%] xl:max-w-[20%]">

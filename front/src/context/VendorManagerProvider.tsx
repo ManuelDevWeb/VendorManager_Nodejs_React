@@ -54,6 +54,7 @@ const VendorManagerProvider = ({ children }: VendorManagerProviderProps) => {
   const [currentNavCategory, setCurrentNavCategory] = useState<
     ItemNavProps | undefined
   >(undefined);
+  const [user, setUser] = useState({} as any);
 
   const router = useRouter();
   const currentRoute = router.pathname;
@@ -75,6 +76,8 @@ const VendorManagerProvider = ({ children }: VendorManagerProviderProps) => {
         navCategoriesAdmin,
         currentNavCategory,
         handleClickCategory,
+        user,
+        setUser,
       }}
     >
       {children}
