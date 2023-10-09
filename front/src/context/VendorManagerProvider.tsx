@@ -10,7 +10,6 @@ import { ItemNavProps } from "../interface/index";
 
 // Icons
 import { GrUserAdmin } from "react-icons/gr";
-import { RiAccountCircleFill } from "react-icons/ri";
 import { FaHandshake } from "react-icons/fa";
 import { MdAccountBalanceWallet } from "react-icons/md";
 import { TbTruckDelivery } from "react-icons/tb";
@@ -34,6 +33,10 @@ const nav = [
     href: "/balance",
     icon: <MdAccountBalanceWallet />,
   },
+];
+
+const navAdmin = [
+  ...nav,
   {
     id: 4,
     name: "Admin",
@@ -45,26 +48,31 @@ const nav = [
 const VendorManagerContext = createContext({});
 
 const VendorManagerProvider = ({ children }: VendorManagerProviderProps) => {
-  const [navCategories, setNavCategories] = useState<ItemNavProps[]>(nav);
+  const navCategories: Array<ItemNavProps> = nav;
+  const navCategoriesAdmin: Array<ItemNavProps> = navAdmin;
+
   const [currentNavCategory, setCurrentNavCategory] = useState<
     ItemNavProps | undefined
   >(undefined);
 
   const router = useRouter();
+  const currentRoute = router.pathname;
 
   const handleClickCategory = (category: ItemNavProps): void => {
     setCurrentNavCategory(category);
-    router.push("/");
+    router.push(category.href);
   };
 
   useEffect(() => {
-    setCurrentNavCategory(nav[0]);
-  }, [navCategories]);
+    const findIndexNav = nav.findIndex((item) => item.href === currentRoute);
+    setCurrentNavCategory(nav[findIndexNav]);
+  }, [navCategories, currentRoute]);
 
   return (
     <VendorManagerContext.Provider
       value={{
         navCategories,
+        navCategoriesAdmin,
         currentNavCategory,
         handleClickCategory,
       }}

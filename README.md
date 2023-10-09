@@ -31,11 +31,13 @@ find mode informatio in `/back/models`
 ```
 
 - Account:
+
   - An account can be either a `buyer` or a `supplier`.
   - Buyers create agreements with suppliers, and suppliers do submissions for buyers.
   - Each account has a `balance` property.
 
 - Agreement:
+
   - An agreement is a contract between a buyer and a supplier.
   - Agreements can have three statuses: `new`, `in_progress`, or `terminated`.
   - Agreements are considered active only when they are in the `in_progress` status.

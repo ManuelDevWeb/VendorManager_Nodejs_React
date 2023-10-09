@@ -11,10 +11,15 @@ import { ItemNavProps } from "../interface/index";
 import { useVendorManager } from "@/hooks/useVendorManager";
 
 const Sidebar = () => {
-  const { navCategories }: { navCategories?: ItemNavProps[] } =
+  const {
+    navCategories,
+    navCategoriesAdmin,
+  }: { navCategories?: ItemNavProps[]; navCategoriesAdmin?: ItemNavProps[] } =
     useVendorManager();
 
-  //   const [adminProtected, setAdminProtected] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(true);
+
+  const tabNav = isAdmin ? navCategoriesAdmin : navCategories;
 
   return (
     <>
@@ -27,7 +32,7 @@ const Sidebar = () => {
       />
 
       <nav className="mt-10">
-        {navCategories?.map((item: ItemNavProps) => (
+        {tabNav?.map((item: ItemNavProps) => (
           <ItemNav key={item.id} item={item} />
         ))}
       </nav>

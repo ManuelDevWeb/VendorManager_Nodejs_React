@@ -11,7 +11,7 @@ const { success, error } = require("../network/response");
 // Function to get all unpaid submissions for a user (either a buyer or supplier) but only for active (new or in_profess) agreements.
 const getAllUnpaidSubmissions = async (req, res) => {
   try {
-    const { accountId } = req.body;
+    const accountId = req.account.id;
 
     if (!accountId) {
       return error(req, res, "Account id is required", 400);
