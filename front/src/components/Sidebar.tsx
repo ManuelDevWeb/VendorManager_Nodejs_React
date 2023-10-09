@@ -1,45 +1,20 @@
 import { useState } from "react";
 import Image from "next/image";
 
-// Icons
-import { GrUserAdmin } from "react-icons/gr";
-import { RiAccountCircleFill } from "react-icons/ri";
-import { FaHandshake } from "react-icons/fa";
-import { MdAccountBalanceWallet } from "react-icons/md";
-import { TbTruckDelivery } from "react-icons/tb";
-
 // Components
 import { ItemNav } from "@/components/ItemNav";
 
-const nav = [
-  {
-    id: 1,
-    name: "Agreements",
-    href: "/",
-    icon: <FaHandshake />,
-  },
-  {
-    id: 2,
-    name: "Submissions",
-    href: "/submissions",
-    icon: <TbTruckDelivery />,
-  },
-  {
-    id: 3,
-    name: "Balance",
-    href: "/balance",
-    icon: <MdAccountBalanceWallet />,
-  },
-  {
-    id: 4,
-    name: "Admin",
-    href: "/admin",
-    icon: <GrUserAdmin />,
-  },
-];
+// Interfaces
+import { ItemNavProps } from "../interface/index";
+
+// Custom Hooks
+import { useVendorManager } from "@/hooks/useVendorManager";
 
 const Sidebar = () => {
-  const [adminProtected, setAdminProtected] = useState(true);
+  const { navCategories }: { navCategories?: ItemNavProps[] } =
+    useVendorManager();
+
+  //   const [adminProtected, setAdminProtected] = useState(true);
 
   return (
     <>
@@ -52,7 +27,7 @@ const Sidebar = () => {
       />
 
       <nav className="mt-10">
-        {nav.map((item) => (
+        {navCategories?.map((item: ItemNavProps) => (
           <ItemNav key={item.id} item={item} />
         ))}
       </nav>

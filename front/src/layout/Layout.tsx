@@ -12,7 +12,7 @@ const Layout = ({ children, page }: LayoutProps) => {
   return (
     <>
       <Head>
-        <title>Dessert Coffe House - {page}</title>
+        <title>Vendor Manager - {page}</title>
         <meta name="description" content="Vendor Manager" />
       </Head>
 

@@ -2,20 +2,35 @@ const { Op } = require("sequelize");
 
 // Model
 const { Agreement } = require("../models/agreement");
+const { Account } = require("../models/account");
 
 // Custom response
 const { success, error } = require("../network/response");
 
 // Function to list an agreements belonging to the user (buyer or supplier) where the agreements are not terminated.
 const getAllAgreements = async (req, res) => {
-  console.log("getAllAgreements");
+  const accountId = req.account.id;
+
   try {
     const notTerminatedAgreements = await Agreement.findAll({
       where: {
         status: {
           [Op.not]: ["terminated"],
         },
+        [Op.or]: [{ BuyerId: accountId }, { SupplierId: accountId }],
       },
+      include: [
+        {
+          model: Account,
+          as: "Buyer",
+          attributes: ["id", "firstName"],
+        },
+        {
+          model: Account,
+          as: "Supplier",
+          attributes: ["id", "firstName"],
+        },
+      ],
     });
 
     if (!notTerminatedAgreements || notTerminatedAgreements.length === 0) {
