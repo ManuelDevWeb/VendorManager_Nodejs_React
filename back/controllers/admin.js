@@ -12,6 +12,15 @@ const { submissionPriceWithRange } = require("../utils/accountFunctions");
 // Function to return the best buyer profession that earned the most money (sum of submissions paid) for any supplier who worked in the specified time range.
 const getBestBuyerProfession = async (req, res) => {
   try {
+    if (req.account.role !== "admin") {
+      return error(
+        req,
+        res,
+        "You are not authorized to access this resource",
+        401
+      );
+    }
+
     let { start, end } = req.query;
 
     if (!start) start = 1;
@@ -67,6 +76,15 @@ const getBestBuyerProfession = async (req, res) => {
 // Function to return the buyers who paid the most for submissions in the given time period. The result should be limited based on the query parameter `limit`, with the default limit set to 3.
 const getBestBuyers = async (req, res) => {
   try {
+    if (req.account.role !== "admin") {
+      return error(
+        req,
+        res,
+        "You are not authorized to access this resource",
+        401
+      );
+    }
+
     let { start, end, limit } = req.query;
 
     if (!limit) limit = 3;
