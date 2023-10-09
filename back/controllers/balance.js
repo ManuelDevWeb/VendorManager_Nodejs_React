@@ -80,7 +80,7 @@ const deposit = async (req, res) => {
 
     return success(req, res, "Balance updated succesfully!", 200);
   } catch (err) {
-    error(req, res, err.message, 500);
+    return error(req, res, err.message, 500);
   }
 };
 

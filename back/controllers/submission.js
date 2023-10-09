@@ -41,7 +41,7 @@ const getAllUnpaidSubmissions = async (req, res) => {
 
     return success(req, res, unpaidSubmissions, 200);
   } catch (err) {
-    error(req, res, err.message, 500);
+    return error(req, res, err.message, 500);
   }
 };
 
@@ -138,7 +138,7 @@ const paySubmission = async (req, res) => {
 
     return success(req, res, "Submission pay successfully", 200);
   } catch (err) {
-    error(req, res, err.message, 500);
+    return error(req, res, err.message, 500);
   }
 };
 

@@ -12,6 +12,10 @@ const Account = db.define("Account", {
     type: Orm.STRING,
     allowNull: false,
   },
+  password: {
+    type: Orm.STRING,
+    allowNull: false,
+  },
   profession: {
     type: Orm.STRING,
     allowNull: false,
@@ -21,6 +25,10 @@ const Account = db.define("Account", {
   },
   type: {
     type: Orm.ENUM("buyer", "supplier"),
+  },
+  role: {
+    type: Orm.ENUM("admin", "user"),
+    defaultValue: "user",
   },
 });
 

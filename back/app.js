@@ -8,6 +8,7 @@ const agreements = require("./routes/agreement");
 const submissions = require("./routes/submission");
 const balances = require("./routes/balance");
 const admin = require("./routes/admin");
+const account = require("./routes/account");
 
 var app = express();
 
@@ -22,5 +23,6 @@ app.use("/agreements", agreements);
 app.use("/submissions", submissions);
 app.use("/balances", balances);
 app.use("/admin", admin);
+app.use("/account", account);
 
 module.exports = app;

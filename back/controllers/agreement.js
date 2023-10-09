@@ -23,7 +23,7 @@ const getAllAgreements = async (req, res) => {
 
     return success(req, res, notTerminatedAgreements, 200);
   } catch (err) {
-    error(req, res, err.message, 500);
+    return error(req, res, err.message, 500);
   }
 };
 
@@ -51,7 +51,7 @@ const getAgreement = async (req, res) => {
 
     return success(req, res, agreement, 200);
   } catch (err) {
-    error(req, res, err.message, 500);
+    return error(req, res, err.message, 500);
   }
 };
 

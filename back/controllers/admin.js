@@ -60,7 +60,7 @@ const getBestBuyerProfession = async (req, res) => {
 
     return success(req, res, data, 200);
   } catch (err) {
-    error(req, res, err.message, 500);
+    return error(req, res, err.message, 500);
   }
 };
 
@@ -110,7 +110,7 @@ const getBestBuyers = async (req, res) => {
 
     return success(req, res, limitBestBuyers, 200);
   } catch (err) {
-    error(req, res, err.message, 500);
+    return error(req, res, err.message, 500);
   }
 };
 
