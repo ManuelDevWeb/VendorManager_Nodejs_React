@@ -70,6 +70,11 @@ const VendorManagerProvider = ({ children }: VendorManagerProviderProps) => {
   };
 
   useEffect(() => {
+    if (currentRoute === "/admin") {
+      setCurrentNavCategory(navAdmin[navAdmin.length - 1]);
+      return;
+    }
+
     const findIndexNav = nav.findIndex((item) => item.href === currentRoute);
     setCurrentNavCategory(nav[findIndexNav]);
   }, [navCategories, currentRoute]);

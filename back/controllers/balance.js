@@ -78,7 +78,14 @@ const deposit = async (req, res) => {
       }
     );
 
-    return success(req, res, "Balance updated succesfully!", 200);
+    const infoNewAccount = await Account.findOne({
+      where: {
+        id: accountId,
+      },
+      attributes: ["id", "balance"],
+    });
+
+    return success(req, res, infoNewAccount, 200);
   } catch (err) {
     return error(req, res, err.message, 500);
   }

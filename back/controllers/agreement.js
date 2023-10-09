@@ -33,11 +33,7 @@ const getAllAgreements = async (req, res) => {
       ],
     });
 
-    if (!notTerminatedAgreements || notTerminatedAgreements.length === 0) {
-      return error(req, res, "There aren't in progress or new agreements", 404);
-    }
-
-    return success(req, res, notTerminatedAgreements, 200);
+    return success(req, res, notTerminatedAgreements || [], 200);
   } catch (err) {
     return error(req, res, err.message, 500);
   }

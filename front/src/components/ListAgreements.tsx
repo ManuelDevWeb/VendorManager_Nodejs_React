@@ -29,7 +29,6 @@ const ListAgreements = () => {
             Authorization: `Bearer ${user.jwtToken}`,
           },
         });
-        console.log(data.body.data);
         setAgreements(data.body.data);
       };
       getAgreements();
@@ -38,6 +37,7 @@ const ListAgreements = () => {
 
   return (
     <div className="flex flex-col md:flex-row gap-10 flex-wrap">
+      {agreements?.length === 0 && <p>You don not have agreements</p>}
       {agreements?.map((item: any) => (
         <AgreementCard key={item.id} agreement={item} />
       ))}
